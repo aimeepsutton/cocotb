@@ -291,7 +291,7 @@ extern "C" {
 #define vpiMethod                             645
 #define vpiIsClockInferred                    649
 #define vpiIsDeferred                         657
-#define vpiIsFinal                            658
+#define vpiIsFinal                            670
 #define vpiIsCoverSequence                    659
 #define vpiQualifier                          650
 #define vpiNoQualifier                     0
