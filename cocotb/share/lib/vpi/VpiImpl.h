@@ -51,7 +51,11 @@ static inline int __check_vpi_error(const char *file, const char *func, long lin
 
     memset(&info, 0, sizeof(info));
     level = vpi_chk_error(&info);
+#ifndef DSIM
     if (info.code == 0 && level == 0)
+#else
+    if (level == 0)
+#endif
         return 0;
 
     switch (level) {
