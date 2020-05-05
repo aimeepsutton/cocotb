@@ -477,14 +477,20 @@ int VpiValueCbHdl::cleanup_callback()
 VpiStartupCbHdl::VpiStartupCbHdl(GpiImplInterface *impl) : GpiCbHdl(impl),
                                                            VpiCbHdl(impl)
 {
+#ifndef IUS
+#ifdef DSIM
     vpi_time.high = (uint32_t)(0);
     vpi_time.low  = (uint32_t)(0);
     vpi_time.type = vpiSimTime;
-#ifndef IUS
+#endif
     cb_data.reason = cbStartOfSimulation;
 #else
+    vpi_time.high = (uint32_t)(0);
+    vpi_time.low  = (uint32_t)(0);
+    vpi_time.type = vpiSimTime;
     cb_data.reason = cbAfterDelay;
 #endif
+
 }
 
 int VpiStartupCbHdl::run_callback() {
