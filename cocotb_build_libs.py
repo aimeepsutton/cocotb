@@ -610,6 +610,16 @@ def get_ext():
     ext.append(icarus_vpi_ext)
 
     #
+    #  Metrics DSim
+    #
+    if os.name == "posix":
+        logger.info("Compiling libraries for Metrics DSim")
+        dsim_vpi_ext = _get_vpi_lib_ext(
+            include_dir=include_dir, share_lib_dir=share_lib_dir, sim_define="DSIM"
+        )
+        ext.append(dsim_vpi_ext)
+    
+    #
     #  Modelsim/Questa
     #
     modelsim_extra_lib = []
